@@ -1,5 +1,7 @@
 package com.dk.bookReservation.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,4 +22,12 @@ public class Lend {
 
     @Enumerated(EnumType.ORDINAL)
     private LendStatus status;
+
+    @ManyToOne
+    @JsonManagedReference
+    private Book book;
+
+    @ManyToOne
+    @JsonBackReference
+    private Member member;
 }
