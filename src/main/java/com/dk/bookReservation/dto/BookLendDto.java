@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class BookLendDto {
-    private Long book_Id;
-    private Long member_Id;
+    private Long bookId;
+    private Long memberId;
 }
