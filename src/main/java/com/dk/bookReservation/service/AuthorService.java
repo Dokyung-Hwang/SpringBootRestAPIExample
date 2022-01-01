@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class AuthorService {
     private final AuthorRepository authorRepository;
 
-    public Author authorCreate(AuthorDto authorDto) {
+    public Author createAuthor(AuthorDto authorDto) {
         Author author = new Author();
         BeanUtils.copyProperties(authorDto, author);
         return authorRepository.save(author);
