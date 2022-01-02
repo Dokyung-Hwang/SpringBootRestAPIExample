@@ -22,12 +22,11 @@ public class LendService {
     private final LendRepository lendRepository;
     private final MemberRepository memberRepository;
     private final BookRepository bookRepository;
-    private final AuthorRepository authorRepository;
 
-    public List<String> LendABook(List<BookLendDto> list){
+    public List<String> lendABook(BookLendDto bookLendDto){
         List<String> booksApprovedToInuse = new ArrayList<>();
-        list.forEach(bookLendDto -> {
-            Optional<Book> bookForId = bookRepository.findById(bookLendDto.getBookId());
+        bookLendDto.getBookIds().forEach(bookId -> {
+            Optional<Book> bookForId = bookRepository.findById(bookId);
             if (!bookForId.isPresent()) {
                 throw new EntityNotFoundException("Can't find any book under given ID");
             }
@@ -38,7 +37,7 @@ public class LendService {
             }
 
             Member member = memberForId.get();
-            if (member.getStatus() != "ACTIVATE") {
+            if (member.getStatus() != MemberStatus.ACTIVATE) {
                 throw new RuntimeException("User is not activate to proceed a lending.");
             }
 

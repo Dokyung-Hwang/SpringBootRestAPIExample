@@ -22,6 +22,7 @@ public class Lend {
 
     @Enumerated(EnumType.ORDINAL)
     private LendStatus status;
+//    private String status;
 
     @ManyToOne
     @JsonManagedReference

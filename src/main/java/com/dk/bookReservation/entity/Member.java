@@ -19,10 +19,10 @@ public class Member {
     private String firstName;
     private String lastName;
 
-//    @Enumerated(EnumType.STRING)
-//    private MemberStatus status;
+    @Enumerated(EnumType.STRING)
+    private MemberStatus status = MemberStatus.ACTIVATE;
 
-    private String status;
+//    private String status;
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
