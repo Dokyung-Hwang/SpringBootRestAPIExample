@@ -14,6 +14,15 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
     private final MemberService memberService;
 
+    @GetMapping("/members")
+    public ResponseEntity getMembers(@RequestParam(required = false) String id) {
+        if (id == null){
+            return ResponseEntity.ok(memberService.readMembers());
+        }
+        return ResponseEntity.ok(memberService.readMembers());
+    }
+
+
     @PostMapping("/member")
     private ResponseEntity<Member> createMember (@RequestBody MemberDto memberDto) {
         return ResponseEntity.ok(memberService.createMember(memberDto));
